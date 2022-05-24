@@ -1,0 +1,42 @@
+﻿@page
+@model SanaWebTest.Pages.ProducDeleteModel
+@{
+}
+
+<form method="post">
+    <input type="hidden" asp-for="ProductId" />
+    <h4>Are you sure to delete the product?</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name:</th>
+                <td>@Model.CurrentProduct.Name</td>
+            </tr>
+        
+            <tr>
+                <th>Ammount:</th>
+                <td>@Model.CurrentProduct.Amount</td>
+            </tr>
+        
+            <tr>
+                <th>Price:</th>
+                <td>@Model.CurrentProduct.Price.ToString("N2")</td>
+            </tr>
+        
+            <tr>
+                <th>Create Date:</th>
+                <td>@Model.CurrentProduct.CreateDate.ToString("dd/MM/yyyy hh:mm:ss")</td>
+            </tr>
+
+        
+            <tr>
+                <th>Update Date:</th>
+                <td>@Model.CurrentProduct.UpdateDate?.ToString("dd/MM/yyyy hh:mm:ss")</td>
+            </tr>
+        
+        </thead>
+    </table>
+
+    <button class="btn btn-danger" type="submit"> Yes</button>
+    <a class="btn btn-primary" asp-page="/Index">No</a>
+</form>

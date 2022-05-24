@@ -1,0 +1,49 @@
+﻿@page
+@model SanaWebTest.Pages.ProductCreateModel
+@{
+}
+
+<form method="post">
+    <input type="hidden" asp-for="CurrentProduct.Id" />
+    <h4>CREATE A PRODUCT</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name:</th>
+                <td>
+                    <input type="text" asp-for="CurrentProduct.Name" />  
+                </td>
+            </tr>
+        
+            <tr>
+                <th>Ammount:</th>
+                <td>
+                    <input type="number" asp-for="CurrentProduct.Amount" />  
+                </td>
+            </tr>
+        
+            <tr>
+                <th>Price:</th>
+                <td>
+                    <input type="number" asp-for="CurrentProduct.Price" />  
+                </td>
+            </tr>
+        
+            <tr>
+                <th>Category:</th>
+                <td>
+                    <select asp-for="CurrentProduct.CategoryId">
+                        @foreach(var item in Model.Categories)
+                        {
+                            <option value="@item.Id"> @item.Name</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+        
+        </thead>
+    </table>
+
+    <button class="btn btn-success" type="submit"> Create</button>
+    <a class="btn btn-primary" asp-page="/Index">Return</a>
+</form>

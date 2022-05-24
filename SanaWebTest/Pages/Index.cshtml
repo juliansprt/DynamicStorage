@@ -1,0 +1,51 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+
+<form id="formPrincipal" method="post">
+    <h6>Storage Type:</h6>
+    <select asp-for="CurrentStorage" onchange="formPrincipal.submit()">
+        @foreach (var item in Model.Storages)
+        {
+            <option value="@item.Key">@item.Value</option>
+        }
+    </select>
+
+    <a class="btn btn-primary" asp-page="/ProductCreate" >Create a product</a>
+
+    @if(Model.Products != null)
+    {
+     
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Amount</th>
+                    <th>Price</th>
+                    <th>Create Date</th>
+                    <th>Update Date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model.Products)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Amount</td>
+                        <td>@item.Price.ToString("N2")</td>
+                        <td>@item.CreateDate.ToString("dd//MM/yyyy hh:mm:ss")</td>
+                        <td>@item.UpdateDate?.ToString("dd//MM/yyyy hh:mm:ss")</td>
+                        <td>
+                            <a asp-page="/ProducDelete" asp-route-id="@item.Id">Delete</a>
+                            <a asp-page="/ProductUpdate" asp-route-id="@item.Id">Update</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>   
+    }
+</form>
