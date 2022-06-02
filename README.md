@@ -21,6 +21,7 @@ These are the requirements to run the application
 		"SqlServerDefault": "data source=localhost;Initial Catalog = SanaTest; Integrated Security = True;"
 	}
 	```
+* The database name must be exists
 
 
 ## Usage
